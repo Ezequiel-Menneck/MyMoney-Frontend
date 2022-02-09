@@ -64,7 +64,7 @@ class BillingCycles extends Component {
                                 <Form
                                     onSubmit={this.props.update}
                                     submitLabel="Alterar"
-                                    submitClass="warning"
+                                    submitClass="primary"
                                 />
                             </TabContent>
                             <TabContent id="tabDelete">
