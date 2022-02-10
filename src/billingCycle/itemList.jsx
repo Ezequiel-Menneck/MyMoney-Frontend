@@ -47,14 +47,16 @@ class ItemList extends Component {
                         readOnly={this.props.readOnly}
                     />
                 </td>
-                <If test={this.props.showStatus}>
+                <td>
+                    <If test={this.props.showStatus}>
                     <Field
                         name={`${this.props.field}[${index}][status]`}
                         component={Input}
                         placeholder="Informe o status"
                         readOnly={this.props.readOnly}
                     />
-                </If>
+                    </If>
+                </td>
                 <td>
                     <button
                         type="button"
