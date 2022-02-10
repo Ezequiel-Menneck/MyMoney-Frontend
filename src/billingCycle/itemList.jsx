@@ -5,20 +5,25 @@ import { bindActionCreators } from "redux";
 
 import Grid from "../common/layout/grid";
 import Input from "../common/form/input";
+import If from "../common/operador/if";
 
-import './button.css'
+import "./button.css";
 
 class ItemList extends Component {
-    
     add(index, item = {}) {
-        if(!this.props.readOnly) {
-            this.props.arrayInsert('billingCycleForm', this.props.field, index, item)
+        if (!this.props.readOnly) {
+            this.props.arrayInsert(
+                "billingCycleForm",
+                this.props.field,
+                index,
+                item
+            );
         }
     }
 
     remove(index) {
-        if(!this.props.readOnly && this.props.list.length > 1) {
-            this.props.arrayRemove('billingCycleForm', this.props.field, index)
+        if (!this.props.readOnly && this.props.list.length > 1) {
+            this.props.arrayRemove("billingCycleForm", this.props.field, index);
         }
     }
 
@@ -38,10 +43,18 @@ class ItemList extends Component {
                     <Field
                         name={`${this.props.field}[${index}][value]`}
                         component={Input}
-                        placeholder="Informe o nome"
+                        placeholder="Informe o valor"
                         readOnly={this.props.readOnly}
                     />
                 </td>
+                <If test={this.props.showStatus}>
+                    <Field
+                        name={`${this.props.field}[${index}][status]`}
+                        component={Input}
+                        placeholder="Informe o status"
+                        readOnly={this.props.readOnly}
+                    />
+                </If>
                 <td>
                     <button
                         type="button"
@@ -79,6 +92,9 @@ class ItemList extends Component {
                             <tr>
                                 <th>Nome</th>
                                 <th>Valor</th>
+                                <If test={this.props.showStatus}>
+                                    <th>Status</th>
+                                </If>
                                 <th className="table-actions">Ações</th>
                             </tr>
                         </thead>
@@ -90,5 +106,6 @@ class ItemList extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ arrayInsert, arrayRemove }, dispatch)
+const mapDispatchToProps = (dispatch) =>
+    bindActionCreators({ arrayInsert, arrayRemove }, dispatch);
 export default connect(null, mapDispatchToProps)(ItemList);
