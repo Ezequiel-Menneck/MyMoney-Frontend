@@ -1,7 +1,7 @@
 import React from "react";
 
 import Grid from "../common/layout/grid";
-import Row from "../common/layout/Row";
+import Row from "../common/layout/row";
 import ValueBox from "../common/widget/valueBox";
 
 export default ({ credit, debt }) => {
